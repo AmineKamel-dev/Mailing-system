@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Subscription Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f6f6f6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            max-width: 600px;
+            margin: 30px auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .header {
+            background-color: #232f3e;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 25px;
+            color: #111;
+        }
+
+        .btn {
+            background-color: #ffa41c;
+            color: #111;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            color: #777;
+            font-size: 12px;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">Welcome to Our Newsletter!</div>
+        <div class="content">
+            <p>Hello <strong th:text="${subscriberName}">#subscriberName#</strong>,</p>
+            <p>Thanks for signing up for our newsletter! We’ll keep you updated with the latest offers, deals, and
+                product launches.</p>
+            <p>Please confirm your subscription by clicking below:</p>
+            <a th:href="${confirmationLink}" class="btn">#DoubleOptIn#</a>
+            <p>If you didn’t request this, you can safely ignore this email.</p>
+        </div>
+        <div class="footer">
+            <p>You are receiving this email because you signed up on our website.</p>
+        </div>
+    </div>
+</body>
+
+</html>

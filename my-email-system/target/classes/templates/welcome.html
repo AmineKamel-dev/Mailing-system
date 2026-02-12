@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Welcome to Our Store</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f6f6f6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            max-width: 600px;
+            margin: 30px auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #232f3e;
+            color: #ffffff;
+            padding: 25px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .content {
+            padding: 25px;
+            color: #111;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: #ffa41c;
+            font-weight: bold;
+        }
+
+        .btn {
+            background-color: #ffa41c;
+            color: #111;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            color: #777;
+            font-size: 12px;
+            padding: 15px;
+            background-color: #f6f6f6;
+        }
+
+        .divider {
+            border-top: 1px solid #eee;
+            margin: 25px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            Welcome to <span class="highlight">#website Name#</span>!
+        </div>
+        <div class="content">
+            <p>Hi <strong th:text="${customerName}">#Customer#</strong>,</p>
+
+            <p>
+                We’re thrilled to have you join our community! Your new account has been created successfully.
+            </p>
+
+            <p>
+                As a member, you’ll enjoy exclusive offers, early access to sales, and the latest updates on new
+                arrivals.
+            </p>
+
+            <div class="divider"></div>
+
+    
+        </div>
+        <div class="footer">
+            <p>© <span th:text="${year}">2025</span> MyEcommerce Inc. All rights reserved.</p>
+            <p>
+                You’re receiving this email because you created an account at
+                <span class="highlight">#website name#</span>.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

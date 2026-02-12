@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Order Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f6f6f6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            max-width: 600px;
+            margin: 30px auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #232f3e;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 20px;
+            color: #111;
+            line-height: 1.5;
+        }
+
+        .order-info {
+            background-color: #f0f2f2;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .order-info strong {
+            color: #111;
+        }
+
+        .footer {
+            text-align: center;
+            color: #777;
+            font-size: 12px;
+            padding: 15px;
+        }
+
+        .btn {
+            background-color: #ffa41c;
+            color: #111;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">Order Confirmation</div>
+        <div class="content">
+            <p>Hi customer  <strong th:text="${customerName}">#name#</strong>,</p>
+            <p>Thank you for your purchase! We're happy to let you know that we've received your order.</p>
+            <div class="order-info">
+                <p><strong>Transaction ID:</strong> <span th:text="${orderID}">#orderid#</span></p>
+                <p><strong>Item Ordered:</strong> <span th:text="${itemName}">#product name#</span></p>
+                <p><strong>Quantity:</strong> <span th:text="${quantity}">#quantity#</span></p>
+                <p><strong>Total:</strong> $<span th:text="${totalPrice}">#price#</span></p>
+            </div>
+            <p>We’ll send you another email once your order ships.</p>
+        </div>
+        <div class="footer">
+            <p>Thank you for shopping with us.</p>
+        </div>
+    </div>
+</body>
+
+</html>
