@@ -1,11 +1,13 @@
 package com.example.ecommerce.my_email_system.services;
 
+import com.example.ecommerce.my_email_system.model.EmailRenderingStrategy;
+import com.example.ecommerce.my_email_system.model.StrategyResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-import com.example.ecommerce.my_email_system.model.BasicEmail;
+import com.example.ecommerce.my_email_system.model.EmailRequest;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
@@ -15,8 +17,10 @@ public class emailService {
 
     @Autowired
     private JavaMailSender mailSender;
+    @Autowired
+    private StrategyResolver resolver;
 
-    public void sendMail(BasicEmail mail) throws MessagingException {
+    public void sendMail(EmailRequest mail) throws MessagingException {
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper msg = new MimeMessageHelper(mimeMessage, true, "UTF-8");
         msg.setTo(mail.getTo());
@@ -24,14 +28,11 @@ public class emailService {
             msg.setSubject(mail.getSubject());
         else
             msg.setSubject("no Subject");
-        msg.setText(mail.getHTML(), true);
+        EmailRenderingStrategy strategy =resolver.resolve(mail.getType());
+        msg.setText(strategy.render(mail.getPayload()), true);
 
         mailSender.send(msg.getMimeMessage());
     }
-    // DIFFERENT IMPLEMENTATIONS OF sendMail() MIGHT BE NEEDED IN THE FUTURE
+
 
 }
-// requires : documentation of :
-// JavaMailSender
-// configuration of the sender in application.properties
-// simplemailMessage

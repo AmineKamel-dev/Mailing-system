@@ -9,19 +9,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.ecommerce.my_email_system.model.BasicEmail;
+import com.example.ecommerce.my_email_system.model.EmailRequest;
 import com.example.ecommerce.my_email_system.services.emailService;
 
 @RestController
-@RequestMapping("/internal/v1/email")
+@RequestMapping("/api/email")
 public class emailController {
     @Autowired
     emailService emailService;
 
-    @PostMapping(path = "/basic", consumes = "application/json")
-    ResponseEntity<String> handleBasicEmail(@Validated @RequestBody BasicEmail email) {
+    @PostMapping(consumes = "application/json")
+    ResponseEntity<String> sendEmail(@Validated @RequestBody EmailRequest request) {
         try {
-            emailService.sendMail(email);
+            emailService.sendMail(request);
             return ResponseEntity.ok("Email sent");
 
         } catch (Exception e) {
@@ -30,13 +30,5 @@ public class emailController {
         }
     }
 
-    /*
-     * Not currently Needed
-     *
-     * @PostMapping(path = "/transaction", consumes = "application/json")
-     * void handleTransactionEmail(@Validated @RequestBody TransactionEmail email) {
-     * 
-     * 
-     * }
-     */
+
 }
